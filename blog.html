@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Only Docker Guide You Need</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Serif:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#0e0e0e;
+            color:#e8e3d9;
+            font-family:'Share Tech Mono', monospace;
+            padding:80px 10%;
+            line-height:1.7;
+        }
+
+        h1,h2,h3{
+            font-family:'IBM Plex Serif',serif;
+            margin-top:40px;
+            margin-bottom:15px;
+        }
+
+        h1{
+            font-size:40px;
+        }
+
+        h2{
+            font-size:28px;
+            color:#ff7a18;
+        }
+
+        p{
+            color:#cfcfcf;
+            margin-bottom:15px;
+            max-width:850px;
+        }
+
+        pre{
+            background:#111;
+            padding:20px;
+            border-left:4px solid #ff7a18;
+            overflow-x:auto;
+            margin:20px 0;
+        }
+
+        code{
+            color:#0aff99;
+        }
+
+        a{
+            color:#ff7a18;
+            text-decoration:none;
+        }
+
+        a:hover{
+            color:#ff4500;
+        }
+
+        ul{
+            margin-left:20px;
+            margin-bottom:20px;
+        }
+
+        .back{
+            margin-top:60px;
+            display:inline-block;
+            border:1px solid #ff7a18;
+            padding:10px 20px;
+        }
+
+        .back:hover{
+            background:#ff7a18;
+            color:#000;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>The Only Docker Guide You Need</h1>
+
+<hr>
+
+<h2>The actual problem</h2>
+
+<p>
+    Before I go into the details of Docker, I want to explain the problem developers faced that led to its creation.
+</p>
+
+<p>
+    Suppose you are a backend developer working on a Node.js project and you want your teammate who is a frontend developer to run the service. You send him the repo link. What happens next is that he might face issues running that service because he does not have those backend related dependencies in his system.
+</p>
+
+<p>
+    Even if he installs them, he may face version conflicts.
+</p>
+
+<p><strong>Example:</strong></p>
+
+<ul>
+    <li>Your service uses an older version of Node.js</li>
+    <li>Your teammate installs the latest version</li>
+</ul>
+
+<p>
+    This leads to the classic developer problem:
+</p>
+
+<pre><code>Works on my machine.</code></pre>
+
+---
+
+<h2>Use Virtual Machines?</h2>
+
+<p>
+    Before containerization got popular, Virtual Machines were used to solve this issue.
+</p>
+
+<p>Typical workflow:</p>
+
+<ul>
+    <li>Create a VM with its own operating system</li>
+    <li>Install all dependencies and configure the project</li>
+    <li>Send the VM image to your teammate</li>
+</ul>
+
+<p>VM file extensions looked like this:</p>
+
+<pre><code>.vmx
+.qcow2</code></pre>
+
+<p>
+    Your teammate would run the VM and the service would work perfectly.
+</p>
+
+---
+
+<h2>Wait, no need for containers then?</h2>
+
+<p>
+    Now here is the problem with VMs.
+</p>
+
+<p>
+    A VM carries its own operating system, kernel, libraries, and components even if your application doesn't use them.
+</p>
+
+<p>
+    A typical VM image can easily be:
+</p>
+
+<pre><code>20GB - 50GB</code></pre>
+
+<p>
+    It also consumes a large amount of RAM.
+</p>
+
+<p>
+    Containers solve the same problem but in a lightweight way.
+</p>
+
+<ul>
+    <li>Containers share the host OS kernel</li>
+    <li>No separate OS required</li>
+    <li>Images are usually MBs instead of GBs</li>
+</ul>
+
+<p>
+    So instead of sending a **20GB VM**, you send a **200MB container image**.
+</p>
+
+---
+
+<h2>So… What Even Is Docker?</h2>
+
+<p>
+    Think of Docker as a box that contains everything your application needs to run.
+</p>
+
+<p>
+    Every time you run it, Docker creates a container instance from that box.
+</p>
+
+---
+
+<h2>Dockerfile</h2>
+
+<p>
+    A Dockerfile contains instructions for building an image.
+</p>
+
+<p>
+    It defines things like:
+</p>
+
+<ul>
+    <li>Base image</li>
+    <li>Dependencies</li>
+    <li>Commands to run</li>
+</ul>
+
+<p>Example Dockerfile:</p>
+
+<pre><code>
+FROM openjdk:17
+
+WORKDIR /app
+
+COPY target/app.jar app.jar
+
+CMD ["java","-jar","app.jar"]
+</code></pre>
+
+---
+
+<h2>Docker Image</h2>
+
+<p>
+    A Docker image is the blueprint for your container.
+</p>
+
+<p>
+    It contains the app code and dependencies required to run the project.
+</p>
+
+<p>
+    Containers are created from images.
+</p>
+
+---
+
+<h2>Docker Architecture</h2>
+
+<h3>Docker Client</h3>
+
+<p>
+    When you type commands like:
+</p>
+
+<pre><code>docker ps
+docker run</code></pre>
+
+<p>
+    you are using the Docker client. It simply sends instructions to the Docker daemon.
+</p>
+
+---
+
+<h3>Docker Daemon</h3>
+
+<p>
+    The Docker daemon runs in the background and performs the actual work.
+</p>
+
+<ul>
+    <li>Build images</li>
+    <li>Run containers</li>
+    <li>Manage containers</li>
+</ul>
+
+---
+
+<h3>Docker Registry</h3>
+
+<p>
+    A Docker registry stores Docker images.
+</p>
+
+<p>
+    The default public registry is <strong>Docker Hub</strong>.
+</p>
+
+<p>
+    It works similar to GitHub but for container images.
+</p>
+
+<p>
+    Example:
+</p>
+
+<pre><code>
+docker pull moosasadiq18/chess-app
+
+docker run -it moosasadiq18/chess-app
+</code></pre>
+
+---
+
+<h2>Basic Docker Commands</h2>
+
+<p>These are the most common commands developers use.</p>
+
+<h3>Check Docker version</h3>
+
+<pre><code>docker --version</code></pre>
+
+<h3>List running containers</h3>
+
+<pre><code>docker ps</code></pre>
+
+<h3>List all containers</h3>
+
+<pre><code>docker ps -a</code></pre>
+
+<h3>Pull image from Docker Hub</h3>
+
+<pre><code>docker pull nginx</code></pre>
+
+<h3>Run a container</h3>
+
+<pre><code>docker run -p 8080:80 nginx</code></pre>
+
+<h3>Build image from Dockerfile</h3>
+
+<pre><code>docker build -t my-app .</code></pre>
+
+<h3>Run container from image</h3>
+
+<pre><code>docker run -p 8080:8080 my-app</code></pre>
+
+<h3>Stop container</h3>
+
+<pre><code>docker stop container_id</code></pre>
+
+<h3>Remove container</h3>
+
+<pre><code>docker rm container_id</code></pre>
+
+---
+
+<h2>How to Containerize a Java Project</h2>
+
+<p>Basic workflow:</p>
+
+<pre><code>
+# build project
+mvn clean package
+
+# build docker image
+docker build -t java-app .
+
+# run container
+docker run -p 8080:8080 java-app
+</code></pre>
+
+---
+
+<a href="../index.html" class="back">← Back to Portfolio</a>
+
+</body>
+</html>
