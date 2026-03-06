@@ -25,7 +25,6 @@
             line-height: 1.4;
         }
 
-        /* Navbar */
         nav {
             position: fixed;
             width: 100%;
@@ -57,14 +56,12 @@
             color: #ff4500;
         }
 
-        /* Sections */
         section {
             min-height: 100vh;
             padding: 120px 10%;
             border-bottom: 1px solid #222;
         }
 
-        /* Hero / About */
         .hero {
             display: flex;
             flex-direction: column;
@@ -82,7 +79,6 @@
             color: #aaa;
         }
 
-        /* Terminal style */
         .terminal {
             background: #111;
             border-left: 4px solid #ff7a18;
@@ -97,7 +93,6 @@
             min-height: 80px;
         }
 
-        /* Retro Button */
         .btn {
             display: inline-block;
             margin-top: 20px;
@@ -114,7 +109,6 @@
             color: #0e0e0e;
         }
 
-        /* Section Title */
         .section-title {
             font-size: 28px;
             margin-bottom: 30px;
@@ -122,7 +116,6 @@
             letter-spacing: 2px;
         }
 
-        /* Projects */
         .project {
             background: #151515;
             padding: 25px;
@@ -142,13 +135,18 @@
             font-size: 22px;
         }
 
+        .project .date {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
         .project p {
             font-size: 16px;
             color: #bbb;
             margin-bottom: 8px;
         }
 
-        /* Tech Stack */
         .stack span {
             display: inline-block;
             background: #222;
@@ -159,7 +157,6 @@
             border-radius: 3px;
         }
 
-        /* Certifications */
         .cert {
             background: #111;
             border-left: 4px solid #0aff99;
@@ -169,7 +166,6 @@
             color: #0aff99;
         }
 
-        /* Contact */
         .contact a {
             display: block;
             color: #ff7a18;
@@ -182,7 +178,6 @@
             color: #ff4500;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -198,8 +193,10 @@
     <h1>AHMAD MOOSA SADIQ</h1>
     <div>
         <a href="#about" class="smooth-scroll">About</a>
+        <a href="#experience" class="smooth-scroll">Experience</a>
         <a href="#projects" class="smooth-scroll">Projects</a>
         <a href="#certifications" class="smooth-scroll">Certifications</a>
+        <a href="#blogs" class="smooth-scroll">Blogs</a>
         <a href="#contact" class="smooth-scroll">Contact</a>
     </div>
 </nav>
@@ -210,8 +207,49 @@
         I build robust backend systems, containerized services, and deploy scalable applications on AWS.
         I specialize in distributed systems.
     </p>
+
     <div class="terminal" id="terminal"></div>
+
     <a href="#projects" class="btn smooth-scroll">View Projects ↓</a>
+</section>
+
+<section id="experience">
+    <div class="section-title">Work Experience</div>
+
+    <div class="project">
+        <h3>AWS Club — Technical Member</h3>
+        <div class="date">Aug 2025 – Present</div>
+        <p>
+            Worked as a technical person for the AWS Club/Society in my University.
+        </p>
+        <p>
+            Presented topics related to AWS and DevOps and helped students understand
+            cloud computing concepts and deployment workflows.
+        </p>
+        <div class="stack">
+            <span>AWS</span>
+            <span>Cloud Computing</span>
+            <span>DevOps</span>
+            <span>Technical Presentations</span>
+        </div>
+    </div>
+
+    <div class="project">
+        <h3>Al-Khidmat Foundation — Volunteer</h3>
+        <div class="date">Aug 2025 – Dec 2025</div>
+        <p>
+            Conducted community work for people affected by recent floods and for Palestinian families.
+        </p>
+        <p>
+            Taught basic technical skills and digital literacy to orphans at the foundation.
+        </p>
+        <div class="stack">
+            <span>Community Work</span>
+            <span>Teaching</span>
+            <span>Technical Training</span>
+        </div>
+    </div>
+
 </section>
 
 <section id="projects">
@@ -220,7 +258,8 @@
     <div class="project">
         <h3>FileMe — Secure File Sharing Platform</h3>
         <p>
-            Backend with session authentication, OTP verification, file validation, AWS S3 storage, Dockerized EC2 deployment.
+            Backend with session authentication, OTP verification, file validation,
+            AWS S3 storage, and Dockerized EC2 deployment.
         </p>
         <div class="stack">
             <span>Java</span>
@@ -235,7 +274,8 @@
     <div class="project">
         <h3>Chess Engine</h3>
         <p>
-            Chess engine built from scratch implementing full game logic and move validation. Containerized it using Docker.
+            Chess engine built from scratch implementing full game logic and move validation.
+            Containerized using Docker.
         </p>
         <div class="stack">
             <span>Java</span>
@@ -243,18 +283,44 @@
             <span>Docker</span>
         </div>
     </div>
+
+</section>
+
+<section id="blogs">
+
+    <div class="section-title">Blog</div>
+
+    <div class="project">
+
+        <h3>The Only Docker Guide You Need</h3>
+
+        <div class="date">DevOps • Docker</div>
+
+        <p>
+            Understand why Docker exists, how containers solve dependency conflicts,
+            and the essential Docker commands every developer should know.
+        </p>
+
+        <a href="blog.html" class="btn">Read Article →</a>
+
+    </div>
+
 </section>
 
 <section id="certifications">
     <div class="section-title">Certifications</div>
+
     <div class="cert">
         <strong>AWS Cloud Practitioner</strong> — Verified on Coursera<br>
-        <a href="https://www.coursera.org/account/accomplishments/verify/BH64XLR3OLPZ" target="_blank" style="color:#0aff99;">View Certificate</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/BH64XLR3OLPZ" target="_blank" style="color:#0aff99;">
+            View Certificate
+        </a>
     </div>
 </section>
 
 <section id="contact">
     <div class="section-title">Contact</div>
+
     <div class="contact">
         <a href="mailto:ahmadmoosasadiq@gmail.com">Email</a>
         <a href="https://github.com/MoosaSadiq18" target="_blank">GitHub</a>
@@ -267,57 +333,75 @@
 </footer>
 
 <script>
-    // Terminal typing effect
     const terminal = document.getElementById('terminal');
+
     const terminalLines = [
         '$ echo "Skills: Java, Spring Boot, AWS, EC2, S3, Docker, MySQL, Linux, Git"',
         '$ echo "Specialties: Backend architecture, Cloud deployment, Performance optimization"',
-        '$ echo "Linux: Bash"'
+        '$ echo "Linux: Bash, System Admin"'
     ];
+
     let lineIndex = 0;
     let charIndex = 0;
 
     function typeLine() {
+
         if(lineIndex >= terminalLines.length) return;
+
         const line = terminalLines[lineIndex];
-        if(charIndex < line.length) {
+
+        if(charIndex < line.length){
             terminal.innerHTML += line.charAt(charIndex);
             charIndex++;
-            setTimeout(typeLine, 40);
-        } else {
+            setTimeout(typeLine,40);
+        }
+        else{
             terminal.innerHTML += '\n';
             lineIndex++;
             charIndex = 0;
-            setTimeout(typeLine, 400);
+            setTimeout(typeLine,400);
         }
     }
+
     typeLine();
 
-    // Slow smooth scroll
-    document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a.smooth-scroll').forEach(anchor=>{
+        anchor.addEventListener('click',function(e){
+
             e.preventDefault();
+
             const targetID = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetID);
-            if (!targetSection) return;
+
+            if(!targetSection) return;
 
             const targetPosition = targetSection.offsetTop - 60;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             const duration = 900;
+
             let start = null;
 
-            function step(timestamp) {
-                if (!start) start = timestamp;
+            function step(timestamp){
+
+                if(!start) start = timestamp;
+
                 const progress = timestamp - start;
-                const easeInOutCubic = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2,3)/2;
+
+                const easeInOutCubic = t => t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+
                 const percent = Math.min(progress/duration,1);
+
                 const easedPercent = easeInOutCubic(percent);
-                window.scrollTo(0, startPosition + distance*easedPercent);
+
+                window.scrollTo(0,startPosition + distance*easedPercent);
+
                 if(progress < duration) window.requestAnimationFrame(step);
+
             }
 
             window.requestAnimationFrame(step);
+
         });
     });
 </script>
